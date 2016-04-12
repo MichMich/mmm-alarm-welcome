@@ -1,0 +1,12 @@
+{
+    "name": "mmm-alarm-welcome",
+    "preferGlobal": true,
+    "version": "0.0.1",
+    "author": "Michael Teeuw",
+    "description": "",
+    "license": "MIT",
+    "dependencies": {
+        "mqtt": "latest",
+        "patterns": "latest"
+    }
+}
