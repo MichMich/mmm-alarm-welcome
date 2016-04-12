@@ -8,7 +8,7 @@ module.exports = NodeHelper.create({
 	start: function function_name () {
 		this.config = {};
 		this.client = false;
-		this.lastHallwayNotification = 0;
+		this.lastNonDoorNotification = 0;
 	},
 
 	socketNotificationReceived: function(notification, payload) {
@@ -31,13 +31,13 @@ module.exports = NodeHelper.create({
 
 		patterns.add('/homesensor/{device}/{sensor}', function(data) {
 		    if (data.sensor === 'hallway' && data.message === '1') {
-		    	lastHallwayNotification = new Date();
+		    	self.lastNonDoorNotification = new Date();
 		    	return;
 		    }
 
 		    if (data.sensor === 'door' && data.message === '1') {
 		    	var now = new Date();
-		    	if (now - self.lastHallwayNotification > self.config.triggerDelay) {
+		    	if (now - self.lastNonDoorNotification > self.config.triggerDelay) {
 		    		self.sendSocketNotification('WELCOME_HOME');
 		    	}
 		    }
