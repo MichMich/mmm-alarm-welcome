@@ -7,6 +7,7 @@
     "license": "MIT",
     "dependencies": {
         "mqtt": "latest",
-        "patterns": "latest"
+        "patterns": "latest",
+        "play-sound": "latest"
     }
 }

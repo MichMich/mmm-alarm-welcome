@@ -1,7 +1,7 @@
 var NodeHelper = require("node_helper");
 var mqtt    = require('mqtt');
 var patterns = require('patterns')();
-
+var player = require('play-sound')(opts = {});
 
 
 module.exports = NodeHelper.create({
@@ -39,6 +39,9 @@ module.exports = NodeHelper.create({
 		    	var now = new Date();
 		    	if (now - self.lastNonDoorNotification > self.config.triggerDelay) {
 		    		self.sendSocketNotification('WELCOME_HOME');
+		    		setTimeout(function() {
+			    		player.play('welcome.aiff', function(err){});
+		    		}, 3000);
 		    	}
 		    }
 
