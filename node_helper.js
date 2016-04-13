@@ -30,7 +30,7 @@ module.exports = NodeHelper.create({
 		});
 
 		patterns.add('/homesensor/{device}/{sensor}', function(data) {
-		    if (data.sensor === 'hallway' && data.message === '1') {
+		    if (data.sensor !== 'door' && data.message === '1') {
 		    	self.lastNonDoorNotification = new Date();
 		    	return;
 		    }
