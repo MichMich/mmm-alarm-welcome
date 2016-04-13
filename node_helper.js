@@ -40,7 +40,7 @@ module.exports = NodeHelper.create({
 		    	if (now - self.lastNonDoorNotification > self.config.triggerDelay) {
 		    		self.sendSocketNotification('WELCOME_HOME');
 		    		setTimeout(function() {
-			    		player.play('welcome.aiff', function(err){});
+			    		player.play(self.path +'/welcome.aiff', function(err){});
 		    		}, 3000);
 		    	}
 		    }
