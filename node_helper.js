@@ -41,7 +41,7 @@ module.exports = NodeHelper.create({
 		    		self.sendSocketNotification('WELCOME_HOME');
 		    		setTimeout(function() {
 			    		player.play(self.path +'/welcome.aiff', function(err){});
-		    		}, 3000);
+		    		}, self.config.animationSpeed * 2);
 		    	}
 		    }
 
