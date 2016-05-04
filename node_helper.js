@@ -9,6 +9,7 @@ module.exports = NodeHelper.create({
 		this.config = {};
 		this.client = false;
 		this.lastNonDoorNotification = 0;
+		this.connected = false;
 	},
 
 	socketNotificationReceived: function(notification, payload) {
@@ -21,6 +22,12 @@ module.exports = NodeHelper.create({
 	},
 
 	startConnection: function() {
+		// Prevent multiple connections.
+		if (this.connected) {
+			return;
+		}
+		this.connected = true;
+		
 		var self = this;
 		self.client  = mqtt.connect('mqtt://' + self.config.server, {username:self.config.username, password:self.config.password, clientId:'mmm-alarm-welcome-'+self.makeid()});
 		self.client.on('connect', function () {
@@ -41,7 +48,7 @@ module.exports = NodeHelper.create({
 		    		self.sendSocketNotification('WELCOME_HOME');
 		    		setTimeout(function() {
 			    		player.play(self.path +'/welcome.aiff', function(err){});
-		    		}, self.config.animationSpeed * 2);
+		    		}, self.config.animationSpeed);
 		    	}
 		    }
 
