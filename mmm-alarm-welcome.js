@@ -5,7 +5,7 @@ Module.register("mmm-alarm-welcome",{
 		server: 'http://test.mosquitto.org',
 		username: '',
 		password: '',
-		triggerDelay: 10000,
+		triggerDelay: 60000,
 		animationSpeed: 1000,
 		displayTime: 15000
 
