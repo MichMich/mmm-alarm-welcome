@@ -18,15 +18,15 @@ Module.register("mmm-alarm-welcome",{
 	},
 
 	socketNotificationReceived: function(notification, payload) {
-    	if (notification === "WELCOME_HOME") {
-    		this.displayMessage();
-    	}
+    		if (notification === "WELCOME_HOME") {
+    			this.displayMessage();
+    		}
 	},
 
 	notificationReceived: function(notification, payload) {
-    	if (notification === "DOM_OBJECTS_CREATED") {
-    		this.hide();
-    	}
+    		if (notification === "DOM_OBJECTS_CREATED") {
+    			this.hide(0, {lockString: self.identifier});
+    		}
 	},
 
 	// Override dom generator.
@@ -54,10 +54,10 @@ Module.register("mmm-alarm-welcome",{
 								//show other modules;
 								module.show(self.config.animationSpeed);
 							});
-						});
+						}, {lockString: self.identifier});
 					}, self.config.displayTime);
-				});
-			});
+				}, {lockString: self.identifier});
+			}, {lockString: self.identifier});
 		});
 	}
 });
