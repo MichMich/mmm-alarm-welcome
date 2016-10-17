@@ -52,7 +52,7 @@ Module.register("mmm-alarm-welcome",{
 						self.hide(self.config.animationSpeed, function() {
 							otherModules.enumerate(function(module) {
 								//show other modules;
-								module.show(self.config.animationSpeed);
+								module.show(self.config.animationSpeed, {lockString: self.identifier});
 							});
 						}, {lockString: self.identifier});
 					}, self.config.displayTime);
